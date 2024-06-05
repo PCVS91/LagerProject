@@ -80,10 +80,11 @@ class Section:
         return sum([len(rack) for rack in self.racks])
 # Class Regal. There are 20 racks in each Regal
 class Regal:
-    def __init__(self, sections):
+    def __init__(self, sections,initialDis=0):
     # sections is a list of sections
         self.sections = sections
-        dis = 0
+        self.initialDis=initialDis
+        dis=initialDis
         for section in self.sections:
             section.set_distance(dis)
             dis += 1
@@ -108,6 +109,9 @@ class Regal:
             
 # Class Corr. In each regal there are two 'Regals' of 20 racks.
 class Corr:
-    def __init__(regal1, regal2):
+    def __init__(self,regal1, regal2):
         self.regal1=regal1
         self.regal2=regal2
+    def shuffle(self):
+        regal1.shuffle()
+        regal2.shuffle()
